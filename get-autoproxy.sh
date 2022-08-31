@@ -1,1 +1,1 @@
-networksetup -getautoproxystate Wi-Fi
+networksetup -getautoproxyurl Wi-Fi
