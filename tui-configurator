@@ -1,0 +1,41 @@
+#!/bin/bash
+
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=4
+BACKTITLE="Backtitle here"
+TITLE="Proxy Options"
+MENU="Choose one of the following options:"
+
+OPTIONS=(1 "Get Proxy State"
+         2 "Set Proxy State Off"
+         3 "Set Proxy State On"
+         4 "Reset Proxy Url"
+         5 "Set Proxy Url to random crap")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        1)
+            networksetup -getautoproxyurl Wi-Fi
+            ;;
+        2)
+            networksetup -setautoproxystate Wi-Fi off
+            ;;
+        3)
+            networksetup -setautoproxystate Wi-Fi on
+            ;;
+        4)
+            networksetup -setautoproxyurl Wi-Fi "https://drive.google.com/uc?export=view&id=1809pntJsBSkLFGMLS3S68Fcip7WW7Ts6"
+            ;;
+        5)  
+            networksetup -setautoproxyurl Wi-Fi "ajhfshdfiuhdougdiofgojdfgpoj"
+esac
+
