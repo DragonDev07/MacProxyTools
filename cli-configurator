@@ -1,0 +1,35 @@
+#!/bin/bash
+
+PS3='Choose one of the following options: '
+options=("Get Proxy State" "Set Proxy State Off" "Set Proxy State On" "Reset Proxy Url" "Set Proxy Url to random crap")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Get Proxy State")
+            clear
+            networksetup -getautoproxyurl Wi-Fi
+            break
+            ;;
+        "Set Proxy State Off")
+            clear
+            networksetup -setautoproxystate Wi-Fi off
+            break
+            ;;
+        "Set Proxt State On")
+            clear
+            networksetup -setautoproxystate Wi-Fi on
+            break
+            ;;
+        "Reset Proxy Url")
+            clear
+            networksetup -setautoproxyurl Wi-Fi "https://drive.google.com/uc?export=view&id=1809pntJsBSkLFGMLS3S68Fcip7WW7Ts6"
+            break
+            ;;
+        "Set Proxy Url to random crap")
+            clear
+            networksetup -setautoproxyurl Wi-Fi "skdkjdgdfgjdofjgodfijg"
+            break
+            ;;
+    esac
+done
+
